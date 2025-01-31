@@ -1,10 +1,19 @@
-#cage{
-    width: min(30vw, 30vh);
-    height: min(30vw, 30vh);
+.cage{
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);
     position: absolute;
-    top: 50px;
-    left: 50px;
     cursor: pointer;
     border: 1px solid black;
+}
+
+#cage1{
+    top: min(5vh, 5vw);
+    left: min(5vh, 5vw);
     background-color: rgba(240, 248, 255, 0.2);
+}
+
+#cage2{
+    top: calc(100vh - min(55vh, 55vw)); /* Corrected calculation */
+    left: calc(100vw - min(55vh, 55vw));
+    background-color: rgba(238, 232, 170, 0.2);
 }
