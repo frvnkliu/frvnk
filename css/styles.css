@@ -50,6 +50,33 @@ body{
     background-color: rgba(238, 232, 170, 0.2); 
 }
 
+@supports (width: 1dvw) {
+    /* override all size/position rules to use dvw/dvh */
+    .cage,
+    .cageBackground {
+      width:  min(50dvw, 50dvh);
+      height: min(50dvw, 50dvh);
+    }
+  
+    #cage1,
+    #cage1Background {
+      top:  calc(50dvh - min(50dvh, 50dvw)/2);
+      left: calc(50dvw - min(50dvh, 50dvw)/2);
+    }
+  
+    #cage2,
+    #cage2Background {
+      top:  min(5dvh, 5dvw);
+      left: min(5dvh, 5dvw);
+    }
+  
+    #cage3,
+    #cage3Background {
+      top:  calc(100dvh - min(55dvh, 55dvw));
+      left: calc(100dvw - min(55dvh, 55dvw));
+    }
+}
+
 footer {
     position: fixed;
     bottom: 16px;
