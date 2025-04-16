@@ -99,8 +99,8 @@ document.addEventListener("pointerup", e => {
 });
 
 
-const startText = document.getElementById("start");
+const startBtn = document.getElementById("start");
 
-startText.addEventListener("click", ()=>{
-
+startBtn.addEventListener("click", ()=>{
+    console.log("hi");
 });

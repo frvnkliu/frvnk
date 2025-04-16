@@ -56,16 +56,33 @@ footer {
     width: 100%;
     text-align: center;
     z-index: 10;
-  }
-
-footer a {
-    font-weight: bold;
-    color: black;                 /* or whatever color you like */
-    padding: 8px 16px;
-    border: 1px solid black;
-    background-color: white;
+    pointer-events: none; 
 }
 
-footer a:hover {
+footer button {
+    pointer-events: auto;
+  }
+
+/* Button styling */
+#start {
+    font-weight: bold;
+    font-size: 1rem;
+    color: black;
+    background-color: white;
+    padding: 8px 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.05s;
+  }
+  
+/* Hover state */
+#start:hover {
     background-color: aliceblue;
+}
+
+/* Active (pressed) state */
+    #start:active {
+    background-color: lightgray;
+    transform: translateY(1px);
 }
