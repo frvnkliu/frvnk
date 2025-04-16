@@ -1,19 +1,71 @@
+body{
+    overflow: hidden;
+}
+
+
 .cage{
     width: min(50vw, 50vh);
     height: min(50vw, 50vh);
     position: absolute;
     cursor: pointer;
+    z-index: 3;
+    touch-action: none;  /* allow drag gestures instead of scroll */
+}
+
+.cageBackground{
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);
     border: 1px solid black;
+    position: absolute;    
 }
 
 #cage1{
+    top: calc(50vh - min(50vh, 50vw)/2);
+    left: calc(50vw - min(50vh, 50vw)/2);
+}
+#cage2{
     top: min(5vh, 5vw);
     left: min(5vh, 5vw);
-    background-color: rgba(240, 248, 255, 0.2);
 }
 
-#cage2{
-    top: calc(100vh - min(55vh, 55vw)); /* Corrected calculation */
+#cage3{
+    top: calc(100vh - min(55vh, 55vw));
     left: calc(100vw - min(55vh, 55vw));
-    background-color: rgba(238, 232, 170, 0.2);
+}
+
+#cage1Background{
+    top: calc(50vh - min(50vh, 50vw)/2);
+    left: calc(50vw - min(50vh, 50vw)/2);
+}
+
+#cage2Background{
+    top: min(5vh, 5vw);
+    left: min(5vh, 5vw);
+    background-color: rgba(240, 248, 255, 0.3);
+}
+
+#cage3Background{
+    top: calc(100vh - min(55vh, 55vw));
+    left: calc(100vw - min(55vh, 55vw));
+    background-color: rgba(238, 232, 170, 0.2); 
+}
+
+footer {
+    position: fixed;
+    bottom: 16px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+  }
+
+footer a {
+    font-weight: bold;
+    color: black;                 /* or whatever color you like */
+    padding: 8px 16px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+footer a:hover {
+    background-color: aliceblue;
 }
