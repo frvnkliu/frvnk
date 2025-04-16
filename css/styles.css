@@ -4,8 +4,8 @@ body{
 
 
 .cage{
-    width: min(50vw, 50vh);
-    height: min(50vw, 50vh);
+    width: min(50dvw, 50dvh);
+    height: min(50dvw, 50dvh);
     position: absolute;
     cursor: pointer;
     z-index: 3;
@@ -13,40 +13,40 @@ body{
 }
 
 .cageBackground{
-    width: min(50vw, 50vh);
-    height: min(50vw, 50vh);
+    width: min(50dvw, 50dvh);
+    height: min(50dvw, 50dvh);
     border: 1px solid black;
     position: absolute;    
 }
 
 #cage1{
-    top: calc(50vh - min(50vh, 50vw)/2);
-    left: calc(50vw - min(50vh, 50vw)/2);
+    top: calc(50dvh - min(50dvh, 50dvw)/2);
+    left: calc(50dvw - min(50dvh, 50dvw)/2);
 }
 #cage2{
-    top: min(5vh, 5vw);
-    left: min(5vh, 5vw);
+    top: min(5dvh, 5dvw);
+    left: min(5dvh, 5dvw);
 }
 
 #cage3{
-    top: calc(100vh - min(55vh, 55vw));
-    left: calc(100vw - min(55vh, 55vw));
+    top: calc(100dvh - min(55dvh, 55dvw));
+    left: calc(100dvw - min(55dvh, 55dvw));
 }
 
 #cage1Background{
-    top: calc(50vh - min(50vh, 50vw)/2);
-    left: calc(50vw - min(50vh, 50vw)/2);
+    top: calc(50dvh - min(50dvh, 50dvw)/2);
+    left: calc(50dvw - min(50dvh, 50dvw)/2);
 }
 
 #cage2Background{
-    top: min(5vh, 5vw);
-    left: min(5vh, 5vw);
+    top: min(5dvh, 5dvw);
+    left: min(5dvh, 5dvw);
     background-color: rgba(240, 248, 255, 0.3);
 }
 
 #cage3Background{
-    top: calc(100vh - min(55vh, 55vw));
-    left: calc(100vw - min(55vh, 55vw));
+    top: calc(100dvh - min(55dvh, 55dvw));
+    left: calc(100dvw - min(55dvh, 55dvw));
     background-color: rgba(238, 232, 170, 0.2); 
 }
 
