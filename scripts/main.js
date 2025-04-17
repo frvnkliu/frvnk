@@ -190,10 +190,10 @@ startBtn.addEventListener("click", () => {
       const newTop  = start.top  + (targetTopPct  - start.top ) * t;
   
       // write dynamic-viewport units
-      cage.style.left = `${newLeft}vw`;
-      cage.style.top  = `${newTop}vh`;
-      bg.style.left   = `${newLeft}vw`;
-      bg.style.top    = `${newTop}vh`;
+      cage.style.left = `${newLeft}dvw`;
+      cage.style.top  = `${newTop}dvh`;
+      bg.style.left   = `${newLeft}dvw`;
+      bg.style.top    = `${newTop}dvh`;
     });
   
     // update overlap matrix & scales
