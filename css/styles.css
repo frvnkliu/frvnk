@@ -2,10 +2,9 @@ body{
     overflow: hidden;
 }
 
-
 .cage{
-    width: min(50dvw, 50dvh);
-    height: min(50dvw, 50dvh);
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);
     position: absolute;
     cursor: pointer;
     z-index: 3;
@@ -13,57 +12,54 @@ body{
 }
 
 .cageBackground{
-    width: min(50dvw, 50dvh);
-    height: min(50dvw, 50dvh);
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);
     border: 1px solid black;
     position: absolute;    
 }
 
-#cage1{
-    top: calc(50dvh - min(50dvh, 50dvw)/2);
-    left: calc(50dvw - min(50dvh, 50dvw)/2);
+#cage1, #cage1Background{
+    top:  calc(50vh - min(25vh, 25vw));
+    left: calc(50vw - min(25vh, 25vw));
 }
-#cage2{
-    top: min(5dvh, 5dvw);
-    left: min(5dvh, 5dvw);
-}
-
-#cage3{
-    top: calc(100dvh - min(55dvh, 55dvw));
-    left: calc(100dvw - min(55dvh, 55dvw));
+#cage2, #cage2Background{
+    top: min(5vh, 5vw);
+    left: min(5vh, 5vw);
 }
 
-#cage1Background{
-    top: calc(50dvh - min(50dvh, 50dvw)/2);
-    left: calc(50dvw - min(50dvh, 50dvw)/2);
+#cage3, #cage3Background{
+    top: calc(100vh - min(55vh, 55vw));
+    left: calc(100vw - min(55vh, 55vw));
 }
 
 #cage2Background{
-    top: min(5dvh, 5dvw);
-    left: min(5dvh, 5dvw);
     background-color: rgba(240, 248, 255, 0.3);
 }
 
 #cage3Background{
-    top: calc(100dvh - min(55dvh, 55dvw));
-    left: calc(100dvw - min(55dvh, 55dvw));
     background-color: rgba(238, 232, 170, 0.2); 
 }
 
+#container{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+
 @supports (width: 1dvw) {
-    /* override all size/position rules to use dvw/dvh */
     .cage,
     .cageBackground {
       width:  min(50dvw, 50dvh);
       height: min(50dvw, 50dvh);
     }
-  
     #cage1,
     #cage1Background {
-      top:  calc(50dvh - min(50dvh, 50dvw)/2);
-      left: calc(50dvw - min(50dvh, 50dvw)/2);
+      top:  calc(50dvh - min(25dvh, 25dvw));
+      left: calc(50dvw - min(25dvh, 25dvw));
     }
-  
     #cage2,
     #cage2Background {
       top:  min(5dvh, 5dvw);
@@ -75,7 +71,13 @@ body{
       top:  calc(100dvh - min(55dvh, 55dvw));
       left: calc(100dvw - min(55dvh, 55dvw));
     }
+
+    #container{
+        width: 100dvw;
+        height: 100dvh; 
+    }
 }
+
 
 footer {
     position: fixed;
@@ -98,7 +100,6 @@ footer button {
     background-color: white;
     padding: 8px 16px;
     border: 1px solid black;
-    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.15s, transform 0.05s;
   }
@@ -109,7 +110,7 @@ footer button {
 }
 
 /* Active (pressed) state */
-    #start:active {
+#start:active {
     background-color: lightgray;
     transform: translateY(1px);
 }

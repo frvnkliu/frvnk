@@ -1,7 +1,5 @@
 import * as THREE from './three.module.js';
 
-const container = document.getElementById("container");
-
 const scene = new THREE.Scene();
 
 const axesHelper = new THREE.AxesHelper(100);
@@ -10,6 +8,7 @@ const cage1 = document.getElementById("cage1");
 const cage2 = document.getElementById("cage2");
 const cage3 = document.getElementById("cage3");
 
+export const cageScales = [1, 1, 1];
 /* === Cage 1 Beginning === */
 scene.add(axesHelper);
 // Create two separate cameras
@@ -53,6 +52,7 @@ const maxSegments = 64;
 const speed = 0.5; // Adjust this for smoother/slower animation
 
 let rotationSpeed1 = 0.05;
+
 function updateSpirit1(deltaTime){
     // Smoothly update tubularSegments
     if (increasing) {
@@ -81,9 +81,8 @@ function updateSpirit1(deltaTime){
     const edgesGeometry = new THREE.EdgesGeometry(torusGeometry);
     wireframe.geometry.dispose();
     wireframe.geometry = edgesGeometry;
-
-    spirit.rotation.x += rotationSpeed1 * deltaTime;
-    spirit.rotation.y += rotationSpeed1 * deltaTime;
+    spirit.rotation.x += rotationSpeed1 * deltaTime*cageScales[0];
+    spirit.rotation.y += rotationSpeed1 * deltaTime*cageScales[0];
 }
 /* === Cage 1 End === */
 
@@ -160,8 +159,8 @@ const ringRotationSpeeds = [
 function updateRings(deltaTime){
     for(let i = 0; i < rings.length; i++){
         const ring = rings[i];
-        ring.rotation.z += ringRotationSpeeds[i][0] * deltaTime;
-        ring.rotateOnWorldAxis(new THREE.Vector3(rotations[i]), ringRotationSpeeds[i][1]*deltaTime);
+        ring.rotation.z += ringRotationSpeeds[i][0] * deltaTime*cageScales[1];
+        ring.rotateOnWorldAxis(new THREE.Vector3(rotations[i]), ringRotationSpeeds[i][1]*cageScale[1]);
     }
 }
 
@@ -180,7 +179,7 @@ cage3.appendChild(renderer3.domElement);
 const centerSphere3 = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
 
 scene3.add(centerSphere3);
-
+let rotationSpeed3 = 1;
 
 /* === Cage 3 End === */
 
@@ -189,7 +188,7 @@ function animate() {
     requestAnimationFrame(animate);
     // Get the time delta in seconds since the last frame
     const deltaTime = clock.getDelta()*10;
-
+    
     updateSpirit1(deltaTime);
     updateRings(deltaTime);
     // Render the scene
@@ -210,3 +209,12 @@ function onWindowResize() {
 
 // Add event listener for window resize
 window.addEventListener('resize', onWindowResize);
+
+//calamaity
+export function collapse(){
+    for(let i = 0; i< 3; i++){
+        //cageScales[i] = 9;
+    }
+    console.log("Hi");
+    //combine everything into a single scene
+}
