@@ -1,14 +1,20 @@
-body{
+html, body{
     overflow: hidden;
+    overscroll-behavior: none;  
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
 }
 
-.cage{
+#cage, .cage{
     width: min(50vw, 50vh);
     height: min(50vw, 50vh);
     position: absolute;
     cursor: pointer;
-    z-index: 3;
     touch-action: none;  /* allow drag gestures instead of scroll */
+}
+
+.cage{
+    z-index: 3;
 }
 
 .cageBackground{
@@ -18,7 +24,15 @@ body{
     position: absolute;    
 }
 
-#cage1, #cage1Background{
+#cage{
+    z-index: 0;
+}
+
+#cage1{
+    z-index: 4;
+}
+
+#cage1, #cage1Background, #cage{
     top:  calc(50vh - min(25vh, 25vw));
     left: calc(50vw - min(25vh, 25vw));
 }
@@ -80,7 +94,7 @@ body{
 
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 16px;
     width: 100%;
     text-align: center;

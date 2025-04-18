@@ -1,6 +1,6 @@
 import * as THREE from './three.module.js';
 
-const scene = new THREE.Scene();
+
 
 const axesHelper = new THREE.AxesHelper(100);
 
@@ -10,16 +10,16 @@ const cage3 = document.getElementById("cage3");
 
 export const cageScales = [1, 1, 1];
 /* === Cage 1 Beginning === */
-scene.add(axesHelper);
+const scene1 = new THREE.Scene();
 // Create two separate cameras
-let camera = new THREE.PerspectiveCamera(75, 1, 1, 1000);
-camera.position.set(0, 0, 125);
+let camera1 = new THREE.PerspectiveCamera(75, 1, 1, 1000);
+camera1.position.set(0, 0, 125);
 
 
 // Create two renderers, one for each div
-let renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(cage1.clientWidth, cage1.clientHeight);
-cage1.appendChild(renderer.domElement);
+let renderer1 = new THREE.WebGLRenderer({ alpha: true });
+renderer1.setSize(cage1.clientWidth, cage1.clientHeight);
+cage1.appendChild(renderer1.domElement);
 
 // Group both the solid object and the wireframe
 let spirit = new THREE.Group();
@@ -39,11 +39,11 @@ spirit.add(wireframe);
 
 const centerSphereGeometry = new THREE.SphereGeometry(5, 16, 16); // Small sphere
 const centerSphereMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Red color
-const centerSphere = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
+const centerSphere1 = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
 // Add the sphere to the spirit group
-scene.add(centerSphere);
+scene1.add(centerSphere1);
 spirit.position.set(0,0,0);
-scene.add(spirit);
+scene1.add(spirit);
 
 let tubularSegments = 64;
 let increasing = true; // Direction flag
@@ -183,6 +183,26 @@ let rotationSpeed3 = 1;
 
 /* === Cage 3 End === */
 
+/* === Container Start === */
+
+const scene = new THREE.Scene();
+//scene.add(axesHelper);
+// Create two separate cameras
+const cage = document.getElementById("cage");
+
+let camera = new THREE.PerspectiveCamera(75, 1, 1, 1000);
+camera.position.set(0, 0, 125);
+
+let renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setSize(cage.clientWidth, cage.clientHeight);
+cage.appendChild(renderer.domElement);
+const centerSphere = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
+// Add the sphere to the spirit group
+//scene.add(centerSphere);
+
+/* === Container End === */
+
+
 const clock = new THREE.Clock();
 function animate() {
     requestAnimationFrame(animate);
@@ -193,28 +213,26 @@ function animate() {
     updateRings(deltaTime);
     // Render the scene
 
-    renderer.render(scene, camera);
+    renderer1.render(scene1, camera1);
     renderer2.render(scene2, camera2);
     renderer3.render(scene3, camera3);
+    renderer.render(scene, camera);
 }
 
 animate();
 
 function onWindowResize() {
-    // Update the size of the renderer
-    renderer.setSize(cage1.clientWidth, cage1.clientHeight);
+    renderer.setSize(cage.clientWidth, cage.clientHeight);
+    renderer1.setSize(cage1.clientWidth, cage1.clientHeight);
     renderer2.setSize(cage2.clientWidth, cage2.clientHeight);
     renderer3.setSize(cage3.clientWidth, cage3.clientHeight);
-}
+  }
 
 // Add event listener for window resize
 window.addEventListener('resize', onWindowResize);
 
 //calamaity
 export function collapse(){
-    for(let i = 0; i< 3; i++){
-        //cageScales[i] = 9;
-    }
-    console.log("Hi");
-    //combine everything into a single scene
+    
+    //combine everything into a single scene 
 }

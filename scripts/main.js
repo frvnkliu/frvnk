@@ -67,9 +67,6 @@ for (let cage of cages) {
       // 2) Where the pointer is, in the same % units:
       const pointerPctX = (e.clientX / vw) * 100;
       const pointerPctY = (e.clientY / vh) * 100;
-      console.log(`vw: ${vw}, vh: ${vh}`);
-      console.log("Start Left: ", startLeftPct);
-      console.log("Start Top: ", startTopPct);
 ``
       // 3) Your drag‐offset, in percent:
       offsetX = pointerPctX - startLeftPct;
@@ -118,17 +115,24 @@ for (let cage of cages) {
         for(let j = 0; j < 3; j++){
             cageScales[i] += cageOverlaps[i][j]**2;
         }
-        cageScales[i] = cageScales[i]**1.359;
+        cageScales[i] = cageScales[i]**1.5;
     }
 });
 
 // end dragging
 document.addEventListener("pointerup", e => {
     if (!draggedCage) return;
-
     draggedCage.releasePointerCapture(e.pointerId);
     draggedCage.style.cursor = "grab";
     draggedCage = null;
+    let totalOverlap = 0;
+    for(let i = 0; i < 3; i++){
+        for(let j = 0; j < 3; j++){
+            totalOverlap += cageOverlaps[i][j];
+        }
+    }
+    console.log(totalOverlap);
+    if(totalOverlap > 8.95) start();
 });
 
 
@@ -137,33 +141,32 @@ const startBtn = document.getElementById("start");
 let startPositions = [];
 let animationStartTime = null;
 const animationDuration = 700; // ms, how long the “fly to center” takes
+
 // replace your click handler with this:
 function start(){
-
-}
-
-// 1) Click handler
-startBtn.addEventListener("click", () => {
     // remove the button and disable manual drag
     startBtn.remove();
     cages.forEach(cage => cage.style.pointerEvents = "none");
-  
+
     // snapshot start positions in percent-space
     startPositions = cages.map(cage => {
-      const rect = cage.getBoundingClientRect();
-      const vw   = window.innerWidth;
-      const vh   = window.innerHeight;
-  
-      return {
+    const rect = cage.getBoundingClientRect();
+    const vw   = window.innerWidth;
+    const vh   = window.innerHeight;
+
+    return {
         left: (rect.left  / vw) * 100,  // e.g. 37.5  means 37.5 dvw
         top:  (rect.top   / vh) * 100,  // e.g. 42.0  means 42 dvh
-      };
+    };
     });
-  
+
     // kick off the animation
     animationStartTime = null;
     requestAnimationFrame(animateToCenter);
-  });
+}
+
+// 1) Click handler
+startBtn.addEventListener("click", start);
   
   
   // 2) Animation loop
@@ -208,7 +211,7 @@ startBtn.addEventListener("click", () => {
       for (let j = 0; j < 3; j++) {
         cageScales[i] += cageOverlaps[i][j] ** 2;
       }
-      cageScales[i] = cageScales[i] ** 1.359;
+      cageScales[i] = cageScales[i] ** 1.5;
     }
   
     // continue or finish
