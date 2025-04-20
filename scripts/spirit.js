@@ -1,5 +1,4 @@
-import * as THREE from './three.module.js';
-
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js';
 
 
 const axesHelper = new THREE.AxesHelper(100);
