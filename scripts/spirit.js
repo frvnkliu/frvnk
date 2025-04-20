@@ -9,7 +9,8 @@ const cage2 = document.getElementById("cage2");
 const cage3 = document.getElementById("cage3");
 
 export const cageScales = [1, 1, 1];
-/* === Cage 1 Beginning === */
+//#region Cage1
+
 const scene1 = new THREE.Scene();
 // Create two separate cameras
 let camera1 = new THREE.PerspectiveCamera(75, 1, 1, 1000);
@@ -84,11 +85,9 @@ function updateSpirit1(deltaTime){
     spirit.rotation.x += rotationSpeed1 * deltaTime*cageScales[0];
     spirit.rotation.y += rotationSpeed1 * deltaTime*cageScales[0];
 }
-/* === Cage 1 End === */
+//#endregion
 
-
-/* === Cage 2 Beginning === */
-
+//#region Cage2
 const scene2 = new THREE.Scene();
 // Create two separate cameras
 const camera2 = new THREE.PerspectiveCamera(75, 1, 1, 1000);
@@ -105,12 +104,8 @@ const centerSphere2 = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial)
 
 ringsGroup.add(centerSphere2);
 
-function createRing(ringParams){
-    const ring = new THREE.group();
-
-    // Define outer and inner radii
-    const outerRadius = 72;
-    const innerRadius = 70;
+function createRing(innerRadius = 48, outerRadius = 64){
+    const ring = new THREE.Group();
 
     // Create a hollow cylinder using a CylinderGeometry with different radii
     const ringShape = new THREE.Shape();
@@ -132,41 +127,49 @@ function createRing(ringParams){
 
     const ringGeometry = new THREE.ExtrudeGeometry(ringShape, extrudeSettings);
     const ringMaterial = new THREE.MeshStandardMaterial({
-        color: 0x000000, // Red
+        color: 0x000000,
         wireframe: true, // Enables wireframe mode
-        transparent: true,
-        opacity: 0.5 // Optional transparency
     });
     const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
-    scene.add(ringMesh);
 
     ringMesh.position.set(0, 0, -8);
+    ring.add(ringMesh);
     return ring;
 }
 
-scene2.add(ringsGroup);
-const rings = [];
-const rotations = [
-    [0, 1, 0],
-    [1, 1 ,0]
+const ringParams = [
+    {
+        outerRadius: 64,
+        innerRadius: 52,
+    },
+    {
+        outerRadius: 64,
+        innerRadius: 52,
+    }
 ];
+const rings = ringParams.map((params) => createRing(params.innerRadius, params.outerRadius));
+for(const ring of rings){
+    ringsGroup.add(ring);
+}
 
-const ringRotationSpeeds = [
-    [0.10, 0.005],
-    [0.15, 0.010]
-]
+
+scene2.add(ringsGroup);
+const axes = [ new THREE.Vector3(1,0,0),  new THREE.Vector3(0,1,0)];
+
+const speeds = [ [0.05, 0.005], [0.1, 0.01] ];
 
 function updateRings(deltaTime){
     for(let i = 0; i < rings.length; i++){
         const ring = rings[i];
-        ring.rotation.z += ringRotationSpeeds[i][0] * deltaTime*cageScales[1];
-        ring.rotateOnWorldAxis(new THREE.Vector3(rotations[i]), ringRotationSpeeds[i][1]*cageScale[1]);
+        const [zSpeed, axisSpeed] = speeds[i];
+
+        ring.rotation.z += zSpeed * deltaTime * cageScales[1];
+        ring.rotateOnWorldAxis( axes[i], axisSpeed * deltaTime * cageScales[1] );
     }
 }
+//#endregion
 
-/* === Cage 2 End === */
-
-/* === Cage 3 Beginning === */
+//#region Cage3
 const scene3 = new THREE.Scene();
 // Create two separate cameras
 const camera3 = new THREE.PerspectiveCamera(75, 1, 1, 1000);
@@ -180,8 +183,7 @@ const centerSphere3 = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial)
 
 scene3.add(centerSphere3);
 let rotationSpeed3 = 1;
-
-/* === Cage 3 End === */
+//#endregion
 
 /* === Container Start === */
 
@@ -201,7 +203,6 @@ const centerSphere = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
 //scene.add(centerSphere);
 
 /* === Container End === */
-
 
 const clock = new THREE.Clock();
 function animate() {
@@ -232,7 +233,11 @@ function onWindowResize() {
 window.addEventListener('resize', onWindowResize);
 
 //calamaity
+
+
 export function collapse(){
-    
+    cage.style.zIndex = 10;
+    scene.add(spirit);
+    scene.add(ringsGroup);
     //combine everything into a single scene 
 }

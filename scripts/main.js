@@ -132,7 +132,7 @@ document.addEventListener("pointerup", e => {
         }
     }
     console.log(totalOverlap);
-    if(totalOverlap > 8.95) start();
+    if(totalOverlap > 8.88) start();
 });
 
 
@@ -187,7 +187,7 @@ startBtn.addEventListener("click", start);
       const targetLeftPct = ((vw/2 - w/2) / vw) * 100; // e.g. 50% - (w/vw)*50%
       const targetTopPct  = ((vh/2 - h/2) / vh) * 100;
   
-      // lerp between startPositions[i] → target
+      // leap between startPositions[i] → target
       const start = startPositions[i];
       const newLeft = start.left + (targetLeftPct - start.left) * t;
       const newTop  = start.top  + (targetTopPct  - start.top ) * t;
