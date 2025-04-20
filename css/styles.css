@@ -70,7 +70,7 @@ html, body{
       height: min(50dvw, 50dvh);
     }
     #cage1,
-    #cage1Background {
+    #cage1Background, #cage {
       top:  calc(50dvh - min(25dvh, 25dvw));
       left: calc(50dvw - min(25dvh, 25dvw));
     }
