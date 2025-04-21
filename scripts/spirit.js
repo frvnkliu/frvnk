@@ -53,7 +53,7 @@ const speed = 0.5; // Adjust this for smoother/slower animation
 
 let rotationSpeed1 = 0.05;
 
-function updateSpirit1(deltaTime){
+function updateSpirit(deltaTime){
     // Smoothly update tubularSegments
     if (increasing) {
         tubularSegments += deltaTime * speed;
@@ -115,7 +115,7 @@ function createRing(innerRadius = 48, outerRadius = 64){
     ringShape.holes.push(holePath);
 
     const extrudeSettings = {
-        steps: 2,
+        steps: 1,
         depth: 16,
         bevelEnabled: false,
         bevelThickness: 2,
@@ -131,7 +131,7 @@ function createRing(innerRadius = 48, outerRadius = 64){
     });
     const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
 
-    ringMesh.position.set(0, 0, -8);
+    ringMesh.position.set(0, 0, 0);
     ring.add(ringMesh);
     return ring;
 }
@@ -153,17 +153,17 @@ for(const ring of rings){
 
 
 scene2.add(ringsGroup);
-const axes = [ new THREE.Vector3(1,0,0),  new THREE.Vector3(0,1,0)];
+const ringAxes = [ new THREE.Vector3(1,0,0),  new THREE.Vector3(0,1,0)];
 
-const speeds = [ [0.05, 0.005], [0.1, 0.01] ];
+const ringSpeeds = [ [0.05, 0.005], [0.1, 0.01] ];
 
 function updateRings(deltaTime){
     for(let i = 0; i < rings.length; i++){
         const ring = rings[i];
-        const [zSpeed, axisSpeed] = speeds[i];
+        const [zSpeed, axisSpeed] = ringSpeeds[i];
 
         ring.rotation.z += zSpeed * deltaTime * cageScales[1];
-        ring.rotateOnWorldAxis( axes[i], axisSpeed * deltaTime * cageScales[1] );
+        ring.rotateOnWorldAxis( ringAxes[i], axisSpeed * deltaTime * cageScales[1] );
     }
 }
 //#endregion
@@ -179,15 +179,61 @@ let renderer3 = new THREE.WebGLRenderer({ alpha: true });
 renderer3.setSize(cage3.clientWidth, cage3.clientHeight);
 cage3.appendChild(renderer3.domElement);
 const centerSphere3 = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
-
 scene3.add(centerSphere3);
-let rotationSpeed3 = 1;
+
+function createCube(x, y, z, color = 0xff0000) {
+    const group = new THREE.Group();
+  
+    const geometry = new THREE.BoxGeometry(70, 70, 70);
+  
+    const fillMaterial = new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0.0,
+    });
+  
+    const wireframeMaterial = new THREE.MeshBasicMaterial({
+      color,
+      wireframe: true,
+    });
+  
+    const fillCube = new THREE.Mesh(geometry, fillMaterial);
+    const wireCube = new THREE.Mesh(geometry, wireframeMaterial);
+  
+    group.add(fillCube);
+    group.add(wireCube);
+  
+    group.position.set(x, y, z);
+    return group;
+  }
+
+
+const star = new THREE.Group();
+
+const cubes = [createCube(0, 0, 0, 0x000000), createCube(0, 0, 0, 0x000000), createCube(0, 0, 0, 0x000000)];
+
+for(const cube of cubes){
+    star.add(cube);
+}
+
+const cubeAxes = [ new THREE.Vector3(0.5,0.5,0),  new THREE.Vector3(0,0.5, 0.5), new THREE.Vector3(0.5,0,0.5)];
+const cubeSpeeds = [0.1, 0.1, 0.1];
+
+//irregular animation
+function updateCubes(deltaTime){
+    for(let i = 0; i < cubes.length; i++){
+        const cube = cubes[i];
+        const axisSpeed = cubeSpeeds[i];
+        cube.rotateOnWorldAxis( cubeAxes[i], axisSpeed * deltaTime * cageScales[2]);
+    }
+}
+
+scene3.add(star);
+
 //#endregion
 
-/* === Container Start === */
-
+//#region Cage
 const scene = new THREE.Scene();
-//scene.add(axesHelper);
 // Create two separate cameras
 const cage = document.getElementById("cage");
 
@@ -197,11 +243,11 @@ camera.position.set(0, 0, 125);
 let renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize(cage.clientWidth, cage.clientHeight);
 cage.appendChild(renderer.domElement);
-const centerSphere = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
+//const centerSphere = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
 // Add the sphere to the spirit group
 //scene.add(centerSphere);
 
-/* === Container End === */
+//#endregion
 
 const clock = new THREE.Clock();
 function animate() {
@@ -209,8 +255,9 @@ function animate() {
     // Get the time delta in seconds since the last frame
     const deltaTime = clock.getDelta()*10;
     
-    updateSpirit1(deltaTime);
+    updateSpirit(deltaTime);
     updateRings(deltaTime);
+    updateCubes(deltaTime);
     // Render the scene
 
     renderer1.render(scene1, camera1);
@@ -226,7 +273,7 @@ function onWindowResize() {
     renderer1.setSize(cage1.clientWidth, cage1.clientHeight);
     renderer2.setSize(cage2.clientWidth, cage2.clientHeight);
     renderer3.setSize(cage3.clientWidth, cage3.clientHeight);
-  }
+}
 
 // Add event listener for window resize
 window.addEventListener('resize', onWindowResize);
@@ -238,5 +285,6 @@ export function collapse(){
     cage.style.zIndex = 10;
     scene.add(spirit);
     scene.add(ringsGroup);
+    scene.add(star);
     //combine everything into a single scene 
 }
