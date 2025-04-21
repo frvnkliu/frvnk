@@ -3,9 +3,11 @@ html, body{
     overscroll-behavior: none;  
     overscroll-behavior-x: none;
     overscroll-behavior-y: none;
+    margin: 0;
+    padding: 0;
 }
 
-#cage, .cage{
+.cage{
     width: min(50vw, 50vh);
     height: min(50vw, 50vh);
     position: absolute;
@@ -13,9 +15,17 @@ html, body{
     touch-action: none;  /* allow drag gestures instead of scroll */
 }
 
-#cagesContainer{
+#cageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
+}
+
+#cage {
+    width: min(50vw, 50vh);    /* 50% of viewport height, works if container = viewport */
+    height: min(50vw, 50vh);
 }
 
 .cage{
@@ -103,7 +113,21 @@ html, body{
     }
 }
 
+header {
+    position: absolute;
+    top: 16px;
+    width: 100%;
+    z-index: 10;
+    pointer-events: none; 
+    text-align: center;
+}
 
+header text{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Footer */
 footer {
     position: absolute;
     bottom: 16px;
@@ -115,7 +139,7 @@ footer {
 
 footer button {
     pointer-events: auto;
-  }
+}
 
 /* Button styling */
 #start {

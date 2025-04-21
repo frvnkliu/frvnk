@@ -130,7 +130,7 @@ document.addEventListener("pointerup", e => {
     for(let i = 0; i < 3; i++){
         for(let j = 0; j < 3; j++){
             totalOverlap += cageOverlaps[i][j];
-            if(cageOverlaps[i][j] > 0.75) closeCount++;
+            if(cageOverlaps[i][j] > 0.70) closeCount++;
         }
     }
     if(closeCount == 9) start();
@@ -220,15 +220,16 @@ startBtn.addEventListener("click", start);
       requestAnimationFrame(animateToCenter);
     } else {
 
-      collapse();
-      cageBackgrounds.forEach(bg => bg.classList.add('fade-out'));
+        collapse();
+        //document.getElementById("cage").style.border = "1px solid black";
 
-      const FADE_DURATION = 500; // match your CSS transition duration in ms
+        cageBackgrounds.forEach(bg => bg.classList.add('fade-out'));
+        const FADE_DURATION = 500; // match your CSS transition duration in ms
 
-      setTimeout(() => {
-        cageBackgrounds.forEach(bg => bg.remove());
-        cages.forEach(cg => cg.remove());
-      }, FADE_DURATION);
+        setTimeout(() => {
+            cageBackgrounds.forEach(bg => bg.remove());
+            cages.forEach(cg => cg.remove());
+        }, FADE_DURATION);
 
     }
   }
