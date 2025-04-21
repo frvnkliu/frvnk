@@ -13,8 +13,17 @@ html, body{
     touch-action: none;  /* allow drag gestures instead of scroll */
 }
 
+#cagesContainer{
+    width: 100vw;
+    height: 100vh;
+}
+
 .cage{
     z-index: 3;
+}
+
+.fade-out {
+    opacity: 0;
 }
 
 .cageBackground{
@@ -22,6 +31,7 @@ html, body{
     height: min(50vw, 50vh);
     border: 1px solid black;
     position: absolute;    
+    transition: opacity 0.5s ease; /* adjust duration as you like */
 }
 
 #cage{
@@ -31,6 +41,7 @@ html, body{
 #cage1{
     z-index: 4;
 }
+
 
 #cage1, #cage1Background, #cage{
     top:  calc(50vh - min(25vh, 25vw));

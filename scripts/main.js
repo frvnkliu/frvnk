@@ -45,7 +45,7 @@ function calcOverlap(cageA, cageB){
     const diffX = Math.abs(cageAX-cageBX)/cageLength;
     const diffY = Math.abs(cageAY-cageBY)/cageLength;
 
-    return Math.max(1-4*diffX*diffY, 0);
+    return Math.max(1-Math.max(diffX,diffY), 0);
 }
 
 
@@ -126,13 +126,14 @@ document.addEventListener("pointerup", e => {
     draggedCage.style.cursor = "grab";
     draggedCage = null;
     let totalOverlap = 0;
+    let closeCount = 0;
     for(let i = 0; i < 3; i++){
         for(let j = 0; j < 3; j++){
             totalOverlap += cageOverlaps[i][j];
+            if(cageOverlaps[i][j] > 0.75) closeCount++;
         }
     }
-    console.log(totalOverlap);
-    if(totalOverlap > 8.88) start();
+    if(closeCount == 9) start();
 });
 
 
@@ -218,6 +219,16 @@ startBtn.addEventListener("click", start);
     if (t < 1) {
       requestAnimationFrame(animateToCenter);
     } else {
+
       collapse();
+      cageBackgrounds.forEach(bg => bg.classList.add('fade-out'));
+
+      const FADE_DURATION = 500; // match your CSS transition duration in ms
+
+      setTimeout(() => {
+        cageBackgrounds.forEach(bg => bg.remove());
+        cages.forEach(cg => cg.remove());
+      }, FADE_DURATION);
+
     }
   }

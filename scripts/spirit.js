@@ -101,7 +101,7 @@ cage2.appendChild(renderer2.domElement);
 let ringsGroup = new THREE.Group();
 const centerSphere2 = new THREE.Mesh(centerSphereGeometry, centerSphereMaterial);
 
-ringsGroup.add(centerSphere2);
+scene2.add(centerSphere2);
 
 function createRing(innerRadius = 48, outerRadius = 64){
     const ring = new THREE.Group();
@@ -283,6 +283,7 @@ window.addEventListener('resize', onWindowResize);
 
 export function collapse(){
     cage.style.zIndex = 10;
+    scene.add(centerSphere1);
     scene.add(spirit);
     scene.add(ringsGroup);
     scene.add(star);
