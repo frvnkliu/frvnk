@@ -148,7 +148,7 @@ body{
         height: 100dvh; 
     }
 
-    section{
+    .section{
         height: 100dvh;
     }
 }
