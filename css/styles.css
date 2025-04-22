@@ -25,20 +25,8 @@ body{
     width: min(50vw, 50vh);
     height: min(50vw, 50vh);
     position: absolute;
-    cursor: move;
+    cursor: pointer;
     touch-action: none;  /* allow drag gestures instead of scroll */
-}
-
-#home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* desktop: intro on the left, cage on the right */
-    height: 100vh;
-}
-
-.section{
-    height: 100vh;
 }
 
 /* mobile‑first swap: when viewport is narrow, stack and reverse order */
@@ -104,21 +92,7 @@ body{
     background-color: rgba(238, 232, 170, 0.2); 
 }
 
-#container{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-}
-
-
 @supports (width: 1dvw) {
-    #home{
-        width: 100dvw;
-        height: 100dvh;
-    }
-
     .cage,
     .cageBackground {
       width:  min(50dvw, 50dvh);
@@ -148,7 +122,7 @@ body{
         height: 100dvh; 
     }
 
-    .section{
+    section{
         height: 100dvh;
     }
 }
@@ -206,16 +180,6 @@ footer button {
 #intro.transparent > * {
     opacity: 0;
 }
-
-#intro a {
-    color: black;
-    text-decoration: none;
-}
-
-#intro a:hover {
-    color: #1877F2; /* Meta blue */
-    text-decoration: underline; /* optional */
-}
   
 .site-title {
     font-size: clamp(1rem, 6vw, 1.5rem);
@@ -242,4 +206,29 @@ footer button {
 
 #links a:hover {
     color: #1877f2;    /* Meta blue */
+}
+
+#home{
+    flex-direction: row;
+}
+
+section {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    /* if you ever want a subtle background stripe: */
+    /* background: rgba(0,0,0,0.03); */
+}
+  
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1877F2; /* Meta blue */
+    text-decoration: underline; /* optional */
 }

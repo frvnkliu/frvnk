@@ -124,7 +124,7 @@ document.addEventListener("pointermove", moveDraggedCage);
 function endDraggedCage(e){
     if (!draggedCage) return;
     draggedCage.releasePointerCapture(e.pointerId);
-    draggedCage.style.cursor = "move";
+    draggedCage.style.cursor = "pointer";
     draggedCage = null;
     let totalOverlap = 0;
     let closeCount = 0;
@@ -253,9 +253,9 @@ function animateToCenter(timestamp) {
             cageBackgrounds.forEach(bg => bg.remove());
             cages.forEach(cg => cg.remove());
             document.body.style.overflowY = 'auto';
-            document.getElementById("intro").classList.remove("transparent");
             var sections = [... document.getElementsByTagName('section')];
             sections.forEach(section => section.classList.remove("hidden"));
+            document.getElementById("intro").classList.remove("transparent");
         }, FADE_DURATION);
 
 
