@@ -281,8 +281,14 @@ window.addEventListener('resize', onWindowResize);
 const soul = new THREE.Group();
 scene.add(soul);
 
-export function rotate(){
+const axisX = new THREE.Vector3(1, 0, 0);
+const axisY = new THREE.Vector3(0, 1, 0);
 
+export function rotate(dX, dY){
+    // Rotate the sphere based on mouse movement
+    console.log({dX, dY});
+    soul.rotateOnWorldAxis(axisY, 5*dY);
+    soul.rotateOnWorldAxis(axisX, 5*dX);
 }
 
 export function collapse(){

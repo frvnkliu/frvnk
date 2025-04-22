@@ -1,11 +1,12 @@
 :root {
     --header-height: 2rem;
-  }
+}
 
 html {
     scroll-behavior: smooth;
     /*scroll-padding-top: var(--header-height);*/
     scroll-snap-type: y mandatory;   /* lock y‑axis snapping */
+    overscroll-behavior-x: none;
 }
 
 section {
@@ -29,12 +30,16 @@ body{
     touch-action: none;  /* allow drag gestures instead of scroll */
 }
 
+
+#home{
+    flex-direction: row;
+}
 /* mobile‑first swap: when viewport is narrow, stack and reverse order */
-@media (max-width: 600px) {
+@media (orientation: portrait) {
     #home {
       flex-direction: column-reverse;
     }
-}
+  }
 
 #cage {
     width: min(50vw, 50vh);    /* 50% of viewport height, works if container = viewport */
@@ -206,10 +211,6 @@ footer button {
 
 #links a:hover {
     color: #1877f2;    /* Meta blue */
-}
-
-#home{
-    flex-direction: row;
 }
 
 section {    

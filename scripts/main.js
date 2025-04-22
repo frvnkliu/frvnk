@@ -1,4 +1,4 @@
-import {collapse, cageScales} from './spirit.js';
+import {collapse, cageScales, rotate} from './spirit.js';
 
 let offsetX, offsetY, draggedCage = null;
 
@@ -124,7 +124,7 @@ document.addEventListener("pointermove", moveDraggedCage);
 function endDraggedCage(e){
     if (!draggedCage) return;
     draggedCage.releasePointerCapture(e.pointerId);
-    draggedCage.style.cursor = "pointer";
+    draggedCage.style.cursor = "grab";
     draggedCage = null;
     let totalOverlap = 0;
     let closeCount = 0;
@@ -169,10 +169,47 @@ function start(){
 
 // 1) Click handler
 startBtn.addEventListener("click", start);
+
+function handleEnter(event) {
+    if (event.key === "Enter") {
+        document.removeEventListener("keydown", handleEnter); // remove after first Enter
+        start();
+    }
+}
   
+document.addEventListener("keydown", handleEnter);
+
 let spin = false;
 let prevX, prevY;
-// 2) Animation loop
+function getClientCoords(e) {
+    if (e.touches && e.touches.length > 0) {
+      return {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+    } else {
+      return {
+        x: e.clientX,
+        y: e.clientY
+      };
+    }
+  }
+
+function handleMove(e) {
+    if (!spin) return;
+    e.preventDefault();
+
+    const { x: X, y: Y } = getClientCoords(e);
+    const length = Math.min(window.innerWidth,  window.innerHeight);
+    const dY = (X - prevX) / length; 
+    const dX = (Y - prevY) / length;
+
+    rotate(dX, dY);
+
+    prevX = X;
+    prevY = Y;
+}
+
 function animateToCenter(timestamp) {
     if (!animationStartTime) animationStartTime = timestamp;
     const elapsed = timestamp - animationStartTime;
@@ -233,6 +270,8 @@ function animateToCenter(timestamp) {
         cage.style.cursor = "grab";
         cage.addEventListener("pointerdown", e =>{
             spin = true;
+            cage.style.cursor = "grabbing";
+            document.body.style.cursor = "grabbing";
             prevX = e.clientX;
             prevY = e.clientY;
         });
@@ -240,13 +279,12 @@ function animateToCenter(timestamp) {
         document.removeEventListener("pointerup", endDraggedCage);
         document.removeEventListener("pointermove", moveDraggedCage);
 
-        document.addEventListener("pointermove", (e) =>{
-            e.preventDefault();
-            if(spin){
-                
-            }
-        });
+        document.addEventListener("mousemove", handleMove);
+        document.addEventListener("touchmove", handleMove, { passive: false });
+        
         document.addEventListener("pointerup", (e) => {
+            document.body.style.cursor = "auto";
+            cage.style.cursor = "grab";
             spin = false;
         });
         setTimeout(() => {
