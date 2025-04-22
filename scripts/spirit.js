@@ -1,6 +1,5 @@
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.174.0/three.module.min.js';
 
-
 const axesHelper = new THREE.AxesHelper(100);
 
 const cage1 = document.getElementById("cage1");
@@ -279,13 +278,18 @@ function onWindowResize() {
 window.addEventListener('resize', onWindowResize);
 
 //calamaity
+const soul = new THREE.Group();
+scene.add(soul);
 
+export function rotate(){
+
+}
 
 export function collapse(){
     cage.style.zIndex = 10;
     scene.add(centerSphere1);
-    scene.add(spirit);
-    scene.add(ringsGroup);
-    scene.add(star);
+    soul.add(spirit);
+    soul.add(ringsGroup);
+    soul.add(star);
     //combine everything into a single scene 
 }

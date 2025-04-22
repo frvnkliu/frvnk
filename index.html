@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of Name: Frank Liu, Job: Software Engineer at Meta, Education: NYU Class of 2025">
+
+    <link rel="icon" type="image/png" sizes="256x256" href="favicons/deltaFavicon.png">
 
     <script type="module" src = "scripts/spirit.js" defer></script>
     <script type = "module" src="scripts/main.js" defer></script>
@@ -12,38 +15,63 @@
 </head>
 
 <body>
-  <header>
-    <text>frvnk</text>
-  </header>
   <main>
-    <div>
-
-    </div>
   </main>
-  <div id = "cageContainer">
-    <div id = "cage">
+  <section id="home">
+    <div id="intro" class = transparent>
+      <h2 class="site-title">frvnk</h2>
+  
+      <p class="role">
+        Incoming at
+        <a href="https://www.meta.com/" target="_blank" rel="noopener">Meta</a>
+      </p>
+      <p class="role">
+        Research Assistant at
+        <a href="https://cims.nyu.edu/~regev/" target="_blank" rel="noopener">Regev Lab</a>
+      </p>
+  
+      <nav id="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  
+    <div id="cage"></div>
+
+  </section>
+
+  <div id = "cage1" class = "cage">
+  </div>
+  <div id = "cage1Background" class = "cageBackground">
   </div>
 
-    <div id = "cage1" class = "cage">
-    </div>
-    <div id = "cage1Background" class = "cageBackground">
-    </div>
-  
-    <div id = "cage2" class = "cage">
-    </div>
-    <div id = "cage2Background" class = "cageBackground">
-    </div>
-  
-    <div id = "cage3" class = "cage">
-    </div>
-    <div id = "cage3Background" class = "cageBackground">
-    </div>
+  <div id = "cage2" class = "cage">
+  </div>
+  <div id = "cage2Background" class = "cageBackground">
+  </div>
+
+  <div id = "cage3" class = "cage">
+  </div>
+  <div id = "cage3Background" class = "cageBackground">
+  </div>
+
 
   <!-- footer with centered “Start” link -->
-  <footer>
+  <footer style = "display: none">
     <button id="start">enter</button>
   </footer>
+  <section id = "about" class = "hidden">
+    <h1>About</h1>
+    <div>frank liu</div>
+  </section>
+  <section id = "projects" class = "hidden">
+    <h1>Projects</h1>
+    
+  </section>
+  <section id = "contact" class = "hidden">
+    <h1>Contact</h1>
+  </section>
 </body>
 
 </html>
