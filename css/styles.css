@@ -4,7 +4,6 @@
 
 html {
     scroll-behavior: smooth;
-    /*scroll-padding-top: var(--header-height);*/
     scroll-snap-type: y mandatory;   /* lock y‑axis snapping */
     overscroll-behavior-x: none;
 }

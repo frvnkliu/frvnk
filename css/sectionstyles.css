@@ -1,0 +1,40 @@
+/* grid of cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 1.5rem;
+    width: 80%;
+    max-width: 1000px;
+    margin-top: 2rem;
+  }
+  
+  /* each "card" */
+  .card {
+    background: #fff;
+    border: 1px solid black;   /* light gray */
+    padding: 1.25rem;            /* 20px */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  /* card title */
+  .card h2 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  /* container for pill‑tags */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  /* the pills */
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid black;
+  }
