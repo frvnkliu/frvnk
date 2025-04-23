@@ -3,9 +3,11 @@ section {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+#home{
     height: 100vh;
-    /* if you ever want a subtle background stripe: */
-    /* background: rgba(0,0,0,0.03); */
 }
 
 section {
@@ -13,8 +15,11 @@ section {
 }
 
 @supports (width: 1dvh){
-    section{
+    #home{
         height: 100dvh;
+    }
+    section{
+        min-height: 100dvh;
     }
 }
 
@@ -27,6 +32,7 @@ section {
     width: 80%;
     max-width: 1000px;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 /* each "card" */

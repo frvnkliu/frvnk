@@ -52,12 +52,29 @@ function calcOverlap(cageA, cageB){
 //pointer down
 const cage1 = document.getElementById('cage1');
 const cage1Bg = document.getElementById('cage1Background');
+const startBtn = document.getElementById("start");
+
+let hasCollapse = false;
+
 window.addEventListener('load', () => {
     cage1.classList.add('rotate-wiggle');
     cage1Bg.classList.add('rotate-wiggle');
+    setTimeout(() => {
+        if(!hasCollapse){
+            startBtn.classList.remove("transparent");
+        }
+    }, 3000);
 });
 
-for (let cage of cages) {
+function removeWiggle(){
+    cage1.classList.remove('rotate-wiggle');
+    cage1Bg.classList.remove('rotate-wiggle');
+    for(const cage of cages){
+        cage.removeEventListener("pointerdown", removeWiggle);
+    }
+}
+
+for (const cage of cages) {
     cage.addEventListener("pointerdown", e => {
         e.preventDefault();
         draggedCage = cage;
@@ -84,6 +101,8 @@ for (let cage of cages) {
         cage1.classList.remove('rotate-wiggle');
         cage1Bg.classList.remove('rotate-wiggle');
     });
+  
+    cage.addEventListener("pointerdown", removeWiggle);
 }
   
 function moveDraggedCage(e){
@@ -147,16 +166,16 @@ function endDraggedCage(e){
 }
 document.addEventListener("pointerup", endDraggedCage);
 
-const startBtn = document.getElementById("start");
-
 let startPositions = [];
 let animationStartTime = null;
 const animationDuration = 700; // ms, how long the “fly to center” takes
 
 // replace your click handler with this:
 function start(){
+    removeWiggle();
     // remove the button and disable manual drag
-    startBtn.remove();
+    hasCollapse = true;
+    startBtn.classList.add("transparent");
     cages.forEach(cage => cage.style.pointerEvents = "none");
 
     // snapshot start positions in percent-space
