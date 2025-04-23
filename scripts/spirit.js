@@ -1,3 +1,5 @@
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.174.0/three.module.min.js';
+
 //const axesHelper = new THREE.AxesHelper(100);
 
 const cage1 = document.getElementById("cage1");
