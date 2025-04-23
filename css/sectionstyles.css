@@ -10,6 +10,31 @@ section {
     height: 100vh;
 }
 
+#about div{
+    max-width: 80%;
+}
+
+.about-content {
+    max-width: 600px;                /* never grow past 600px */
+    width: 100%;                     /* but shrink to fill */
+    margin: 0 auto;                  /* center it */
+    padding: 0 1rem;                 /* extra breathing room on very narrow screens */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.about-content p {
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.about-rule {
+    width: 10%;
+    margin: 1rem auto;               /* centers the hr */
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
 section {
     scroll-snap-align: start;        /* snap to the top of each section */
 }
