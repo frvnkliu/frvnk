@@ -6,14 +6,6 @@
     <meta name="description" content="Portfolio of Name: Frank Liu, Job: Software Engineer at Meta, Education: NYU Class of 2025">
 
     <link rel="icon" type="image/png" sizes="256x256" href="favicons/deltaFavicon.png">
-    <script>
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-      }
-      window.onbeforeunload = function () {
-          window.scrollTo(0,0);
-      };
-    </script>
     <script type="module" src = "scripts/spirit.js" defer></script>
     <script type = "module" src="scripts/main.js" defer></script>
 
@@ -24,30 +16,6 @@
 </head>
 
 <body>
-  <section id="home">
-    <div id="intro" class = transparent>
-      <h2 class="site-title">frvnk</h2>
-  
-      <p class="role">
-        Incoming at
-        <a href="https://www.meta.com/" target="_blank" rel="noopener">Meta</a>
-      </p>
-      <p class="role">
-        Research Assistant at
-        <a href="https://cims.nyu.edu/~regev/" target="_blank" rel="noopener">Regev Lab</a>
-      </p>
-  
-      <nav id="links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  
-    <div id="cage"></div>
-
-  </section>
-
   <div id = "cage1" class = "cage">
   </div>
   <div id = "cage1Background" class = "cageBackground rotate-wiggle">
@@ -68,168 +36,186 @@
   <footer>
     <button id="start" class = "transparent"> enter </button>
   </footer>
-  <section id = "about" class="hidden">
-    <h1>About</h1>
 
-    <div class="about-content">
-      <p>Looking for human ingenuity in a world of mimetic AI.</p>
-      <hr class="about-rule">
-      <p><em>
-        This website is a work-in-progress,
-        for more details please refer to:
-        <a href="https://frvnkliu.github.io/portfolio/" target="_blank">
-          Old Portfolio
-        </a>
-      </em></p>
-    </div>
-  </section>
-  <section id = "skills" class="hidden">
-    <h1>Skills</h1>
+  <div class = "sections">
+    <section id="home">
+      <div id="intro" class = transparent>
+        <h2 class="site-title">frvnk</h2>
+    
+        <p class="role">
+          Incoming at
+          <a href="https://www.meta.com/" target="_blank" rel="noopener">Meta</a>
+        </p>
+        <p class="role">
+          Research Assistant at
+          <a href="https://cims.nyu.edu/~regev/" target="_blank" rel="noopener">Regev Lab</a>
+        </p>
+    
+        <nav id="links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div id="cage"></div>
+    </section>
 
-    <div class="cards">
-      <!-- card 1 -->
-      <div class="card">
-        <h2>Frontend</h2>
-        <div class="tags">
-          <span class="tag">React</span>
-          <span class="tag">Next.js</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">HTML</span>
-          <span class="tag">TailwindCSS</span>
+    <section id = "about" class="hidden">
+      <h1>About</h1>
+      <div class="about-content">
+        <p>Looking for human ingenuity in a world of mimetic AI.</p>
+        <hr class="about-rule">
+        <p><em>
+          This website is a work-in-progress,
+          for more details please refer to:
+          <a href="https://frvnkliu.github.io/portfolio/" target="_blank">
+            Old Portfolio
+          </a>
+        </em></p>
+      </div>
+    </section>
+
+    <section id = "skills" class="hidden">
+      <h1>Skills</h1>
+      <div class="cards">
+        <!-- card 1 -->
+        <div class="card">
+          <h2>Frontend</h2>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">HTML</span>
+            <span class="tag">TailwindCSS</span>
+          </div>
+        </div>
+
+        <!-- card 2 -->
+        <div class="card">
+          <h2>Backend</h2>
+          <div class="tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">Python</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Data Science</h2>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">BioPython</span>
+            <span class="tag">scikit-learn</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Systems</h2>
+          <div class="tags">
+            <span class="tag">C++</span>
+            <span class="tag">C</span>
+            <span class="tag">OCaml</span>
+            <span class="tag">Git</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Docker</span>
+          </div>
         </div>
       </div>
+    </section>
+    <section id = "projects" class="hidden">
+      <h1>Projects</h1>
+      <div class="cards">
+        <div class = "card">
+          <h2>Segmentron</h2>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">WebAssembly</span>
+            <span class="tag">WebWorker</span>
+            <span class="tag"><a href="https://github.com/copy/v86" target = "_blank">v86</a></span>
+          </div>
+          <p>DNA segmentation library and tool for NYU Langone</p>
+          <a href="https://frvnkliu.github.io/segmentron/" target = "_blank" class="project-link">View →</a>
+        </div>
   
-      <!-- card 2 -->
-      <div class="card">
-        <h2>Backend</h2>
-        <div class="tags">
-          <span class="tag">Node.js</span>
-          <span class="tag">Express</span>
-          <span class="tag">Python</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">MongoDB</span>
+        <div class = "card">
+          <h2>PyIGV</h2>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">MatPlotLib</span>
+            <span class="tag">BioPython</span>
+            <span class="tag">PyPI</span>
+          </div>
+          <p>Python Library for IGV styled alignment plots</p>
+          <a href="https://github.com/regev-lab/PyIGV" target = "_blank" class="project-link">View →</a>
+        </div>
+        
+        <div class = "card">
+          <h2>Mini Object Oriented Programming Language</h2>
+          <div class="tags">
+            <span class="tag">OCaml</span>
+            <span class="tag">OCamllex</span>
+            <span class="tag"><a href="https://gallium.inria.fr/~fpottier/menhir/" target = "_blank">Menhir</a></span>
+          </div>
+          <p>Language interpreter for a simplified object oriented programming language</p>
+          <a href="https://github.com/frvnkliu/miniOO/tree/main" target = "_blank" class="project-link">View →</a>
+        </div>
+  
+  
+        <div class = "card">
+          <h2>Spheres</h2>
+          <div class="tags">
+            <span class="tag">Three.js</span>
+            <span class="tag">FlStudio</span>
+          </div>
+          <p>Interactive website centered on randomly sampled spheres</p>
+          <a href="https://frvnkliu.github.io/" target = "_blank" class="project-link">View →</a>
+        </div>
+  
+        <div class = "card">
+          <h2>Order Book Simulator</h2>
+          <div class="tags">
+            <span class="tag">C++</span>
+          </div>
+          <p>Single stock order book simulator.</p>
+          <a href="https://github.com/frvnkliu/orderBookSimulator" target = "_blank" class="project-link">View →</a>
+        </div>
+  
+        <div class = "card">
+          <h2>3D Tic-Tac-Toe</h2>
+          <div class="tags">
+            <span class="tag">Three.js</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <p>Playable 3D Version of Tic Tac Toe</p>
+          <a href="https://frvnkliu.github.io/3D-TicTacToe/" target = "_blank" class="project-link">View →</a>
+        </div>
+  
+  
+        <div class = "card">
+          <h2>Some F Squares</h2>
+          <p>UI Tool for Jane Street Puzzle of the Month January 2024</p>
+          <a href="https://frvnkliu.github.io/SomeFSquares/" target = "_blank" class="project-link">View →</a>
+        </div>
+  
+        <div class = "card">
+          <h2>TestPhi</h2>
+          <p>Ensuring interviewing integrity in a world of LLMs and GenAI.</p>
+          <a href="https://testphi.com/" target = "_blank" class="project-link">View →</a>
         </div>
       </div>
-
-      <div class="card">
-        <h2>Data Science</h2>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">BioPython</span>
-          <span class="tag">scikit-learn</span>
-        </div>
+    </section>
+  
+    <section id="contact" class="hidden">
+      <h1>Contact</h1>
+      <div>
+        <a href="mailto:frankliu@nyu.edu"">Email</a> | <a href="https://www.linkedin.com/in/frvnk/"">LinkedIn</a> | <a href="https://github.com/frvnkliu">GitHub</a>
       </div>
-
-      <div class="card">
-        <h2>Systems</h2>
-        <div class="tags">
-          <span class="tag">C++</span>
-          <span class="tag">C</span>
-          <span class="tag">OCaml</span>
-          <span class="tag">Git</span>
-          <span class="tag">Linux</span>
-          <span class="tag">Docker</span>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
-
-  </section>
-  <section id = "projects" class="hidden">
-    <h1>Projects</h1>
-    <div class="cards">
-      <div class = "card">
-        <h2>Segmentron</h2>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">WebAssembly</span>
-          <span class="tag">WebWorker</span>
-          <span class="tag"><a href="https://github.com/copy/v86" target = "_blank">v86</a></span>
-        </div>
-        <p>DNA segmentation library and tool for NYU Langone</p>
-        <a href="https://frvnkliu.github.io/segmentron/" target = "_blank" class="project-link">View →</a>
-      </div>
-
-      <div class = "card">
-        <h2>PyIGV</h2>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">MatPlotLib</span>
-          <span class="tag">BioPython</span>
-          <span class="tag">PyPI</span>
-        </div>
-        <p>Python Library for IGV styled alignment plots</p>
-        <a href="https://github.com/regev-lab/PyIGV" target = "_blank" class="project-link">View →</a>
-      </div>
-      
-      <div class = "card">
-        <h2>Mini Object Oriented Programming Language</h2>
-        <div class="tags">
-          <span class="tag">OCaml</span>
-          <span class="tag">OCamllex</span>
-          <span class="tag"><a href="https://gallium.inria.fr/~fpottier/menhir/" target = "_blank">Menhir</a></span>
-        </div>
-        <p>Language interpreter for a simplified object oriented programming language</p>
-        <a href="https://github.com/frvnkliu/miniOO/tree/main" target = "_blank" class="project-link">View →</a>
-      </div>
-
-
-      <div class = "card">
-        <h2>Spheres</h2>
-        <div class="tags">
-          <span class="tag">Three.js</span>
-          <span class="tag">FlStudio</span>
-        </div>
-        <p>Interactive website centered on randomly sampled spheres</p>
-        <a href="https://frvnkliu.github.io/" target = "_blank" class="project-link">View →</a>
-      </div>
-
-      <div class = "card">
-        <h2>Order Book Simulator</h2>
-        <div class="tags">
-          <span class="tag">C++</span>
-        </div>
-        <p>Single stock order book simulator.</p>
-        <a href="https://github.com/frvnkliu/orderBookSimulator" target = "_blank" class="project-link">View →</a>
-      </div>
-
-      <div class = "card">
-        <h2>3D Tic-Tac-Toe</h2>
-        <div class="tags">
-          <span class="tag">Three.js</span>
-          <span class="tag">JavaScript</span>
-        </div>
-        <p>Playable 3D Version of Tic Tac Toe</p>
-        <a href="https://frvnkliu.github.io/3D-TicTacToe/" target = "_blank" class="project-link">View →</a>
-      </div>
-
-
-      <div class = "card">
-        <h2>Some F Squares</h2>
-        <p>UI Tool for Jane Street Puzzle of the Month January 2024</p>
-        <a href="https://frvnkliu.github.io/SomeFSquares/" target = "_blank" class="project-link">View →</a>
-      </div>
-
-      <div class = "card">
-        <h2>TestPhi</h2>
-        <p>Ensuring interviewing integrity in a world of LLMs and GenAI.</p>
-        <a href="https://testphi.com/" target = "_blank" class="project-link">View →</a>
-      </div>
-
-
-    </div>
-
-  </div>
-  </section>
-
-  <section id="contact" class="hidden">
-    <h1>Contact</h1>
-    <div>
-      <a href="mailto:frankliu@nyu.edu"">Email</a> | <a href="https://www.linkedin.com/in/frvnk/"">LinkedIn</a> | <a href="https://github.com/frvnkliu">GitHub</a>
-    </div>
-  </section>
 </body>
 
 </html>

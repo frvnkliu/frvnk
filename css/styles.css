@@ -2,25 +2,13 @@
     --header-height: 2rem;
 }
 
-html {
-    scroll-behavior: smooth;
-    
-    scroll-snap-type: y mandatory;   /* lock y‑axis snapping */
-    overscroll-behavior: none;  
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;        /* <- STOP root scrolling */
 }
 
-/* disable snapping on touch devices */
-@media (hover: none) and (pointer: coarse) {
-    html {
-      scroll-snap-type: y proximity;
-    }
-  }
-
 body{
-    overflow: hidden;
-    overscroll-behavior: none;  
-    overscroll-behavior-x: none;
-    overscroll-behavior-y: none;
     margin: 0;
     padding: 0;
     font-family: 'Times New Roman', Times, serif;
