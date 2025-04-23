@@ -303,12 +303,13 @@ function animateToCenter(timestamp) {
             spin = false;
         });
         setTimeout(() => {
-            cageBackgrounds.forEach(bg => bg.remove());
             cages.forEach(cg => cg.remove());
-            document.body.style.overflowY = 'auto';
-            var sections = [... document.getElementsByTagName('section')];
-            sections.forEach(section => section.classList.remove("hidden"));
-            document.getElementById("intro").classList.remove("transparent");
+            cageBackgrounds.forEach(bg => bg.remove());
+            setTimeout(()=>{
+                var sections = [... document.getElementsByTagName('section')];
+                sections.forEach(section => section.classList.remove("hidden"));
+                document.getElementById("intro").classList.remove("transparent");
+            }, 500);
         }, FADE_DURATION);
 
 
