@@ -43,9 +43,6 @@ section {
     #home{
         height: 100dvh;
     }
-    section{
-        min-height: 100dvh;
-    }
 }
 
 
