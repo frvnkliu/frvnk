@@ -4,9 +4,17 @@
 
 html {
     scroll-behavior: smooth;
+    
     scroll-snap-type: y mandatory;   /* lock y‑axis snapping */
-    overscroll-behavior-x: none;
+    overscroll-behavior: none;  
 }
+
+/* disable snapping on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    html {
+      scroll-snap-type: y proximity;
+    }
+  }
 
 body{
     overflow: hidden;
