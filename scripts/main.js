@@ -164,7 +164,7 @@ const animationDuration = 700; // ms, how long the “fly to center” takes
 
 // replace your click handler with this:
 function start(){
-    document.addEventListener("keydown", handleEnter);
+    document.removeEventListener("keydown", handleEnter);
     startBtn.classList.add("transparent");
     removeWiggle();
     // remove the button and disable manual drag
