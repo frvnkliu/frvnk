@@ -64,7 +64,7 @@ section {
     border: 1px solid black;   /* light gray */
     padding: 1.25rem;            /* 20px */
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    background-color: rgba(255, 255, 255,0.30);
+    background-color: rgba(255, 255, 255,0.60);
 }
 
 /* card title */
@@ -89,11 +89,11 @@ section {
     font-weight: 500;
     border: 1px solid black;
 }
-.cards > a {
-    margin-top: 1rem;
-
-}
 
 .card p {
     display: flex;
+}
+
+.project-link{
+    margin-top: auto;
 }
