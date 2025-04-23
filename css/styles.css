@@ -8,10 +8,6 @@ html {
     overscroll-behavior-x: none;
 }
 
-section {
-    scroll-snap-align: start;        /* snap to the top of each section */
-}
-
 body{
     overflow: hidden;
     overscroll-behavior: none;  
@@ -19,6 +15,20 @@ body{
     overscroll-behavior-y: none;
     margin: 0;
     padding: 0;
+}
+
+
+@keyframes occasionalWiggle {
+    0%   { transform: rotate(0deg); }
+    60%   { transform: rotate(0deg); }
+    70%  { transform: rotate(2deg); }
+    80%  { transform: rotate(-2deg); }
+    90%  { transform: rotate(2deg); }
+    100%   { transform: rotate(0deg); }
+  }
+
+.rotate-wiggle {
+    animation: occasionalWiggle 2s ease-in-out infinite;
 }
 
 .cage{
@@ -125,10 +135,6 @@ body{
         width: 100dvw;
         height: 100dvh; 
     }
-
-    section{
-        height: 100dvh;
-    }
 }
 
 
@@ -209,19 +215,8 @@ footer button {
 }
 
 #links a:hover {
-    color: #1877f2;    /* Meta blue */
+    color: #1877f2; 
 }
-
-section {    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    /* if you ever want a subtle background stripe: */
-    /* background: rgba(0,0,0,0.03); */
-}
-  
 
 a {
     color: black;
@@ -229,6 +224,6 @@ a {
 }
 
 a:hover {
-    color: #1877F2; /* Meta blue */
+    color: #1877F2;
     text-decoration: underline; /* optional */
 }

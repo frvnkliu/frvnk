@@ -50,6 +50,13 @@ function calcOverlap(cageA, cageB){
 
 
 //pointer down
+const cage1 = document.getElementById('cage1');
+const cage1Bg = document.getElementById('cage1Background');
+window.addEventListener('load', () => {
+    cage1.classList.add('rotate-wiggle');
+    cage1Bg.classList.add('rotate-wiggle');
+});
+
 for (let cage of cages) {
     cage.addEventListener("pointerdown", e => {
         e.preventDefault();
@@ -74,6 +81,8 @@ for (let cage of cages) {
 
         cage.setPointerCapture(e.pointerId);
         cage.style.cursor = "grabbing";
+        cage1.classList.remove('rotate-wiggle');
+        cage1Bg.classList.remove('rotate-wiggle');
     });
 }
   

@@ -1,3 +1,24 @@
+section {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    /* if you ever want a subtle background stripe: */
+    /* background: rgba(0,0,0,0.03); */
+}
+
+section {
+    scroll-snap-align: start;        /* snap to the top of each section */
+}
+
+@supports (width: 1dvh){
+    section{
+        height: 100dvh;
+    }
+}
+
+
 /* grid of cards */
 .cards {
     display: grid;
@@ -6,35 +27,44 @@
     width: 80%;
     max-width: 1000px;
     margin-top: 2rem;
-  }
-  
-  /* each "card" */
-  .card {
+}
+
+/* each "card" */
+.card {
     background: #fff;
     border: 1px solid black;   /* light gray */
     padding: 1.25rem;            /* 20px */
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-  
-  /* card title */
-  .card h2 {
+    background-color: rgba(255, 255, 255,0.30);
+}
+
+/* card title */
+.card h2 {
     margin: 0 0 1rem;
     font-size: 1rem;
     font-weight: 600;
-  }
-  
-  /* container for pill‑tags */
-  .tags {
+}
+
+/* container for pill‑tags */
+.tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-  }
-  
-  /* the pills */
-  .tag {
+}
+
+/* the pills */
+.tag {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     font-size: 0.875rem;
     font-weight: 500;
     border: 1px solid black;
-  }
+}
+.cards > a {
+    margin-top: 1rem;
+
+}
+
+.card p {
+    display: flex;
+}

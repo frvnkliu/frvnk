@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/sectionstyles.css">
 
-    <title>frvnk</title>
+    <title>frvnk</title>      
 </head>
 
 <body>
@@ -58,16 +58,20 @@
 
 
   <!-- footer with centered “Start” link -->
-  <footer style>
+  <footer style = "visibility: hidden;">
     <button id="start">enter</button>
   </footer>
-  <section id = "about">
+  <section id = "about" class="hidden">
     <h1>About</h1>
-    <div>
+    </div>
       Looking for human ingenuity in a world of mimetic AI.
+      <hr style="width:10%; text-align: center">
+    <div>
+      <em>This website is a Work-In-Progress</em>, 
+      for more details please refer to: <a href="https://frvnkliu.github.io/portfolio/" target = "_blank" style = "font-weight: bold">Old Portfolio</a>
     </div>
   </section>
-  <section id = "skills">
+  <section id = "skills" class="hidden">
     <h1>Skills</h1>
 
     <div class="cards">
@@ -120,14 +124,45 @@
     </div>
 
   </section>
-  <section id = "projects">
+  <section id = "projects" class="hidden">
     <h1>Projects</h1>
+    <div class="cards">
+      <div class = "card">
+        <h2>Segmentron</h2>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">WebAssembly</span>
+          <span class="tag">WebWorker</span>
+          <span class="tag">v86</span>
+        </div>
+        <p>DNA segmentation library and tool for collaborators at NYU Langone</p>
+        <a href="https://frvnkliu.github.io/segmentron/" target = "_blank" class="project-link">View →</a>
+      </div>
+    </div>
+    <div class="cards">
+      <div class = "card">
+        <h2>Spheres</h2>
+        <div class="tags">
+          <span class="tag">Three.js</span>
+          <span class="tag">FlStudio</span>
+        </div>
+        <p>Interactive website centered on randomly sampled spheres</p>
+        <a href="https://frvnkliu.github.io/" target = "_blank" class="project-link">View →</a>
+      </div>
+    </div>
+    <div class="cards">
+      <div class = "card">
+        <h2>TestPhi</h2>
+        <p>Ensuring interviewing integrity in a world of LLMs and GenAI.</p>
+        <a href="https://testphi.com/" target = "_blank" class="project-link">View →</a>
+      </div>
+    </div>
   </section>
 
   <section id="contact" class="hidden">
     <h1>Contact</h1>
     <div>
-      <a href="mailto:frankliu@nyu.edu"">email</a> | <a href="https://www.linkedin.com/in/frvnk/"">linkedin</a> | <a href="https://github.com/frvnkliu">github</a> | <a href="https://x.com/frvnkliu"> x</a>
+      <a href="mailto:frankliu@nyu.edu"">email</a> | <a href="https://www.linkedin.com/in/frvnk/"">linkedin</a> | <a href="https://github.com/frvnkliu">github</a>
     </div>
   </section>
 </body>
