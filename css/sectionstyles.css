@@ -16,13 +16,9 @@ section {
     scroll-behavior: smooth;
 }
 
-#home{
-    height: 100vh;
-}
-
 @supports (width: 1dvh){
-    #home{
-        height: 100dvh;
+    section{
+        min-height: 100dvh;
     }
 }
 

@@ -305,10 +305,10 @@ function animateToCenter(timestamp) {
         setTimeout(() => {
             cages.forEach(cg => cg.remove());
             cageBackgrounds.forEach(bg => bg.remove());
+            document.getElementById("intro").classList.remove("transparent");
             setTimeout(()=>{
                 var sections = [... document.getElementsByTagName('section')];
                 sections.forEach(section => section.classList.remove("hidden"));
-                document.getElementById("intro").classList.remove("transparent");
             }, 500);
         }, FADE_DURATION);
 
