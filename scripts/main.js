@@ -164,10 +164,11 @@ const animationDuration = 700; // ms, how long the “fly to center” takes
 
 // replace your click handler with this:
 function start(){
+    document.addEventListener("keydown", handleEnter);
+    startBtn.classList.add("transparent");
     removeWiggle();
     // remove the button and disable manual drag
     hasCollapse = true;
-    startBtn.classList.add("transparent");
     cages.forEach(cage => cage.style.pointerEvents = "none");
 
     // snapshot start positions in percent-space
@@ -192,7 +193,6 @@ startBtn.addEventListener("click", start);
 
 function handleEnter(event) {
     if (event.key === "Enter") {
-        document.removeEventListener("keydown", handleEnter); // remove after first Enter
         start();
     }
 }
@@ -245,11 +245,6 @@ function animateToCenter(timestamp) {
     const targetTopPct  = (targetCageRect.top / vh) * 100;
     cages.forEach((cage, i) => {
         const bg = cageMap.get(cage);
-        const w  = cage.clientWidth;
-        const h  = cage.clientHeight;
-
-
-
         // leap between startPositions[i] → target
         const start = startPositions[i];
         const newLeft = start.left + (targetLeftPct - start.left) * t;
