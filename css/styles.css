@@ -29,7 +29,7 @@ button {
   }
 
 .rotate-wiggle {
-    animation: occasionalWiggle 2s ease-in-out infinite;
+    /*animation: occasionalWiggle 2s ease-in-out infinite;*/
 }
 
 .cage{
