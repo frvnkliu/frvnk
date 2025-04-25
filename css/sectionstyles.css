@@ -55,9 +55,8 @@ section {
     width: 80%;
     max-width: 1000px;
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     justify-content: center;
-    
 }
 
 /* each "card" */
@@ -93,7 +92,7 @@ section {
 }
 
 .card p {
-    display: flex;
+    display: block;
 }
 
 .project-link{
