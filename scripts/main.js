@@ -156,9 +156,9 @@ function endDraggedCage(e){
     }
     if(closeCount == 9){
         if (typeof gtag === 'function') {
-            gtag('event', 'game_start', {
-              event_category: 'engagement',
-              event_label: 'closeCenter'
+            gtag('event', 'start_triggered', {
+              event_category: 'interaction',
+              event_label: 'closeCages' // or 'button_click'
             });
         }
         start();
@@ -173,18 +173,12 @@ const animationDuration = 700; // ms, how long the “fly to center” takes
 // replace your click handler with this:
 function start(){
     document.removeEventListener("keydown", handleEnter);
-    if (typeof gtag === 'function') {
-        gtag('event', 'game_start', {
-          event_category: 'engagement',
-          event_label: 'start'
-        });
-     }
     startBtn.classList.add("transparent");
     removeWiggle();
     // remove the button and disable manual drag
     hasCollapse = true;
     cages.forEach(cage => cage.style.pointerEvents = "none");
-
+``
     // snapshot start positions in percent-space
     startPositions = cages.map(cage => {
         const rect = cage.getBoundingClientRect();
@@ -203,14 +197,20 @@ function start(){
 }
 
 // 1) Click handler
-startBtn.addEventListener("click", start);
+startBtn.addEventListener("click", ()=>{
+    gtag('event', 'start_triggered', {
+      event_category: 'interaction',
+      event_label: 'button_click'
+    });
+    start();
+});
 
 function handleEnter(event) {
     if (event.key === "Enter") {
         if (typeof gtag === 'function') {
-            gtag('event', 'game_start', {
-              event_category: 'engagement',
-              event_label: 'enterStart'
+            gtag('event', 'start_triggered', {
+              event_category: 'interaction',
+              event_label: 'keyboard' // or 'button_click'
             });
         }
         start();
@@ -322,6 +322,7 @@ function animateToCenter(timestamp) {
             cage.style.cursor = "grab";
             spin = false;
         });
+        
         setTimeout(() => {
             cages.forEach(cg => cg.remove());
             cageBackgrounds.forEach(bg => bg.remove());
@@ -332,6 +333,12 @@ function animateToCenter(timestamp) {
             }, 500);
         }, FADE_DURATION);
 
+        if (typeof gtag === 'function') {
+            gtag('event', 'site_enter', {
+              event_category: 'navigation',
+              event_label: 'enter'
+            });
+        }
 
     }
 }
