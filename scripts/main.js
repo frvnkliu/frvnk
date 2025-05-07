@@ -154,7 +154,15 @@ function endDraggedCage(e){
             if(cageOverlaps[i][j] > 0.70) closeCount++;
         }
     }
-    if(closeCount == 9) start();
+    if(closeCount == 9){
+        if (typeof gtag === 'function') {
+            gtag('event', 'game_start', {
+              event_category: 'engagement',
+              event_label: 'closeCenter'
+            });
+        }
+        start();
+    } 
 }
 document.addEventListener("pointerup", endDraggedCage);
 
@@ -165,6 +173,12 @@ const animationDuration = 700; // ms, how long the “fly to center” takes
 // replace your click handler with this:
 function start(){
     document.removeEventListener("keydown", handleEnter);
+    if (typeof gtag === 'function') {
+        gtag('event', 'game_start', {
+          event_category: 'engagement',
+          event_label: 'start'
+        });
+     }
     startBtn.classList.add("transparent");
     removeWiggle();
     // remove the button and disable manual drag
@@ -193,6 +207,12 @@ startBtn.addEventListener("click", start);
 
 function handleEnter(event) {
     if (event.key === "Enter") {
+        if (typeof gtag === 'function') {
+            gtag('event', 'game_start', {
+              event_category: 'engagement',
+              event_label: 'enterStart'
+            });
+        }
         start();
     }
 }
